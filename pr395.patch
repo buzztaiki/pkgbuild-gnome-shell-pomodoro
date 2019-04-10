@@ -1,0 +1,22 @@
+From 0c249f36b66e85ee5132cabb23aad4747fc5545d Mon Sep 17 00:00:00 2001
+From: Joseph Herlant <aerostitch@debian.org>
+Date: Fri, 4 Jan 2019 19:43:37 -0800
+Subject: [PATCH] Use add_seconds when pausing to lower cpu usage.
+
+---
+ lib/timer.vala | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/timer.vala b/lib/timer.vala
+index 6836c45..99e2f44 100644
+--- a/lib/timer.vala
++++ b/lib/timer.vala
+@@ -260,7 +260,7 @@ namespace Pomodoro
+         private void start_timeout ()
+         {
+             if (this.timeout_source == 0) {
+-                this.timeout_source = GLib.Timeout.add (1000, this.on_timeout);
++                this.timeout_source = GLib.Timeout.add_seconds (1, this.on_timeout);
+             }
+         }
+ 
